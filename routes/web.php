@@ -14,7 +14,7 @@ Auth::routes();
 
 
 //ADMIN
-Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function(){
+Route::middleware(['auth', 'is_admin'])->prefix('admin')->name('admin.')->group(function(){
     Route::resource('products', AdminProductController::class);
     Route::resource('users', UserController::class)->except(['create', 'store']);
 });

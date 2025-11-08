@@ -30,7 +30,20 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                    @auth
+                        @if(Auth::user()->is_admin)
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->is('admin/users*') ? 'active' : '' }}" href="{{ route('admin.users.index') }}">
+                                    Usuarios
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->is('admin/products*') ? 'active' : '' }}" href="{{ route('admin.products.index') }}">
+                                    Productos
+                                </a>
+                            </li>
+                        @endif
+                    @endauth
                     </ul>
 
                     <!-- Right Side Of Navbar -->
